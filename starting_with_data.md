@@ -1,7 +1,11 @@
+Starting with data - Heather Lane
+
+- provide 3-5 new questions you decided could be answered with the data
+- include the answer to each questions and the accompanying queries used to obtain the answer
+
 Question 1: 
 
-Using the anaytics table (which covers May-August 2017) which days of the week saw the 
-most visitors and the most sales? Show day name in result.
+Using the anaytics table (which covers May-August 2017) which days of the week saw the most visitors and the most sales? Show day name in result.
 
 SQL Queries: 
 
@@ -34,8 +38,7 @@ Saturday	15469			7858
 
 Question 2: 
 
-What is the retail value of inventory of current "in stock" products if each product 
-was sold at its highest possible price?
+What is the retail value of inventory of current "in stock" products if each product was valued at its highest possible selling price?
 
 SQL Queries:
 
@@ -53,19 +56,15 @@ FROM cte_inventory_value;
 
 Answer:
 
-The retail valus of current in-stock inventory is $4,435,530.60 USD
+The retail value of current in-stock inventory is $4,435,530.60 USD
 
 NOTE:
-There are a multiple products prices in the table for many products probably
-because the price may be different in different months, or different regions so
-I used the highest listed price for this calculation.
+There are multiple product prices in the table for many products probably because the price may be different in different months, or different regions so I used the highest listed price for this calculation.
 
 
 Question 3: 
 
-In December 2016, how many visits came from each source (channel_grouping), and what was 
-the average time spent on the site and the average number of page views per visit for 
-channel grouping?
+In December 2016, how many visits came from each source (channel_grouping), and what was the average time spent on the site and the average number of page views per visit for each channel grouping?
 
 
 SQL Queries:
@@ -82,7 +81,7 @@ ORDER BY number_of_visits DESC
 
 Answer:
 
-channel_grouping	number_of_visits	avg_time_on_site	avg_page_views
+channel_grouping   number_of_visits	  avg_time_on_site     avg_page_views
 Organic Search		444			220.51			5.43
 Referral		209			180.46			5.64
 Direct			183			262.07			5.37
@@ -93,8 +92,7 @@ Affiliates		5			58.80			2.80
 
 Question 4: 
 
-Find the highest price listed in the table for each product, rank the products by 
-price in each category and show the overall average price for products in that category.
+Find the highest price listed in the table for each product, rank the products by price in each category and show the overall average price for products in that category.
 
 
 SQL Queries:
@@ -118,8 +116,7 @@ ORDER BY product_category, price_rank
 
 Answer:
 
-I did not copy the results here as the resulting report is quite large (963 rows). It contains 
-the following columns and content:
+I did not copy the results here as the resulting report is quite large (963 rows). It contains the following columns and content:
 
 product_sku		The product's SKU
 product_name		The product's name
@@ -140,8 +137,6 @@ price_rank		4 (4th highest priced product in Apparel)
 avg_price_by_category	19.69125 (Average of product prices in Apparel)
 
 NOTE:
-There are a multiple products prices in the table for many products probably
-because the price may be different in different months, or different regions so
-I used the highest listed price for this calculation.
+There are multiple product prices in the table for each of many products, maybe because the price is different in different months, or different regions so I used the highest listed price for this calculation.
 
 

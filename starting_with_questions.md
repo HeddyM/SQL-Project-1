@@ -1,3 +1,5 @@
+Start with Questions - Heather Lane
+
 Answer the following questions and provide the SQL queries used to find the answer.
 
     
@@ -20,13 +22,10 @@ ORDER BY transaction_revenues DESC
 
 Answer: 
 The country with the highest transaction revenue is the United States.
-The city with the highest transaction reveune is San Francisco
+The city with the highest transaction reveune is San Francisco.
 
-Note: I used the total_transaction_revenue colum of the all_sessions table for 
-this query even though all but 80 of the entries in this column were NULL. 
-This was the most straight forward approach but with a clearer understanding of 
-thedata set and perhaps more contact available I may have approached this
-question differently.
+Note: I used the total_transaction_revenue column of the all_sessions table for this query even though all but 80 of the entries in this column were NULL. This was the most straight forward approach but with a clearer understanding of the data set and perhaps more contact available I may have approached this question differently (eg. using units_sold * price to calculate revenue).
+
 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
@@ -90,31 +89,22 @@ SELECT AVG(number_of_items_by_city) AS avg_number_items_city
 FROM cte_number_products_ordered;
 
 Answer:
-I could have interpreted this questions two ways to I have provided both options.
+I could have interpreted this questions two ways so I have provided both options.
 
-1. If the question means the average number of different products ie. dog bowls, 
-knapsacks, notebooks each count as 1 regardless of volume of each item.
+1. If the question means the average number of different products ie. dog bowls, knapsacks, notebooks each count as 1 regardless of volume of each item.
 The average number of different roducts ordered across all countries is 3.49
 The average number of different products orders across all cities is 2.26 
 
-2. If the question means the average number of items ie. 10 dog bowls, 5
-knapsacks and 2 notebooks would be 17 items.
+2. If the question means the average number of items ie. 10 dog bowls, 5 knapsacks and 2 notebooks would be 17 items.
 The average number of items ordered across all countries is 21.84
 The average number of items ordered across all cities is 15.20
 
-NOTE: In both cases I used a CTE to get the count of different products or sum of 
-units sold and then used the CTE result to get the average.
+NOTE: In both cases I used a CTE to get the count of different products or sum of units sold and then used the CTE result to get the average.
 
-NOTE: In this and the next two questions it was necessary to join the all_sessions
-table to the analytics table since all_sessions had country and city and analytics
-had units_sold. There were two common columns (neither of which was unique on 
-either table) - full_visitor_id and visit_id. Of course when you join in one
-you get completely different results than when you join on the other. I tried to
-explore with a mentor which was the correct one to choose. It was no clear to 
-me how to make this choice so I chose one and used it consistently.
+NOTE: In this and the next two questions it was necessary to join the all_sessions table to the analytics table since all_sessions had country and city and analytics had units_sold. There were two common columns (neither of which was unique on  either table) - full_visitor_id and visit_id. Of course when you join on one you get completely different results than when you join on the other. I tried to explore with a mentor which was the correct one to choose. It was not clear to me how to make this choice so I chose one and used it consistently.
+
 
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
-
 
 SQL Queries:
 --product categories by country
@@ -143,7 +133,7 @@ ON al.visit_id = an.visit_id
 	HAVING SUM(an.units_sold) >= 5
 ORDER BY al.city, total_units_sold DESC
 
---to determine whethere there were sales in other cities in Canada after reviewing results
+--to determine whether there were sales in other cities in Canada after the reviewing results
 
 SELECT 	al.city, 
 	an.units_sold 
@@ -156,10 +146,9 @@ ON al.visit_id = an.visit_id
 Answer:
 
 Country Results
-The top products categories by country (ie. most units sold from that 
-category) were:
+The top products categories by country (ie. most units sold from that category) were:
 
-Each of these countries had only one catagories with 5 or more units sold
+Each of these countries had only one catagory with 5 or more units sold
 
 Canada - Home/Apparel/Headgear
 Egypt - Home/Shop by Brand/Android
@@ -178,8 +167,7 @@ I have listed the top 5 categories here:
 
 City Results
 
-The number of categories with 5+ units sold and the top product category by city 
-(ie. most units sold from that category) were:
+The number of categories with 5+ units sold and the top product category by city (ie. most units sold from that category) were:
 
 Chicago (4 categories) - 1. Home/Shop by Brand
 Mountain View (5 categories) - 1. Home/Apparel/Men's/Men's Outerwear
@@ -191,13 +179,9 @@ Sunnyvale (2 categories) - 1. Housewares
 Tel Aviv-Yafo (1 category) - Home/Shop by Brand/YouTube
 Toronto (1 category) - Home/Apparel/Headgear
 
-Note: Toronto is the only city in Canada that had any sales recorded in 
-the database and Tel Aviv_Yafo is the only city in Israel in the database 
-so the city and country results are exactly the same.
+Note: Toronto is the only city in Canada that had any sales recorded in the database and Tel Aviv_Yafo is the only city in Israel in the database so the city and country results are exactly the same.
 
-Note: There were so many records for each country where just 1 items was
-purchased from and category that I decided to limit the results to those 
-categories where 5 or more items were ordered within each country or city.
+Note: There were many records for each country where just 1 item was purchased from that category so I decided to limit the results to those categories where 5 or more items were ordered within each country or city.
 
 
 **Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
@@ -233,8 +217,7 @@ ON al.visit_id = an.visit_id
 ORDER BY city, total_units_sold DESC;
 
 Answer:
-The top selling product by country (where 5 or more units were ordered per 
-product) are:
+The top selling product by country (where 5 or more units were ordered per product) are:
 
 Canada - Android Stretch Fit Hat Black
 Egypt - Android RFID Journal
@@ -242,8 +225,7 @@ Israel - YouTube Hard Cover Journal
 Japan - Google Lunch Bag
 United States - Google Alpine Style Backpack
 
-The top selling product by city (where 5 or more units were ordered per 
-product) are:
+The top selling product by city (where 5 or more units were ordered per product) are:
 
 Chicago - Google Alpine Style Backpack
 Houston - Google Sunglasses
@@ -256,13 +238,10 @@ Sunnyvale - SPF-15 Slim & Slender Lip Balm
 Tel Aviv-Yafo - YouTube Hard Cover Journal
 Toronto - Android Stretch Fit Hat Black
 
-Note: Houston appeared on this list and not of the product category list 
-because it was one of the items where the product category was not provided.
+Note: Houston appeared on this list and not on the product category list in the previous question because it was one of the items where the product category was not provided.
 
+Note: Again to make the reults more manageable I limited the result to products with sales of 5 or more units (many countries had a list of products where only 1 unit was ordered)
 
-Note: Again to make the reults more manageable I limited the result to 
-products with sales of 5 or more units (many countries had a list of 
-products where only 1 unit was ordered)
 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
@@ -272,9 +251,9 @@ WITH cte_transaction_revenue AS (SELECT country, SUM(total_transaction_revenue/1
 FROM all_sessions
 WHERE total_transaction_revenue IS NOT NULL
 GROUP BY country)
-SELECT MAX(transaction_revenues),
-	MIN(transaction_revenues),
-	AVG(transaction_revenues)
+	SELECT MAX(transaction_revenues),
+		MIN(transaction_revenues),
+		AVG(transaction_revenues)
 	FROM cte_transaction_revenue;
 
 
@@ -282,9 +261,9 @@ WITH cte_transaction_revenue AS (SELECT city, SUM(total_transaction_revenue/1000
 FROM all_sessions
 WHERE total_transaction_revenue IS NOT NULL
 GROUP BY city)
-SELECT MAX(transaction_revenues),
-	MIN(transaction_revenues),
-	AVG(transaction_revenues)
+	SELECT MAX(transaction_revenues),
+		MIN(transaction_revenues),
+		AVG(transaction_revenues)
 	FROM cte_transaction_revenue;
 
 Answer:
@@ -302,17 +281,9 @@ MIN - $16.99
 AVG - $714.07
 
 
-NOTE: I had no idea how to approach this question as it seemed very similar to 
-question one. I chose to expand on the information in question 1 by providing
-MIN, MAX, AVG information across countries and cities as a way of 
-"summarizing revenue". I used the queries in question 1 as CTE's and then added
-a query to get MIN, MAX and AVG.
+NOTE: I had no idea how to approach this question as it seemed very similar to question one. I chose to expand on the information in question 1 by providing MIN, MAX, AVG information across countries and cities as a way of "summarizing revenue". I used the queries in question 1 as CTE's and then added a query to get MIN, MAX and AVG.
 
-I don't know how to summarize "impact" without additional information, other 
-than to state that clearly sales and revenue are mainly based in the US. This 
-may cause the company to decide to  focus on this market exclusively or to look 
-at improving global reach through various forms of marketing or perhaps shipping 
-discounts. 
+I don't know how to summarize "impact" without additional information, other than to state that clearly sales and revenue are mainly based in the US. This may cause the company to decide to  focus on this market exclusively or to look at improving global reach through various forms of marketing or perhaps shipping discounts. 
 
 
 
