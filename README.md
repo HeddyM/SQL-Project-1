@@ -6,7 +6,7 @@ This project provides students with the opportunity to practice skills learned t
 My goals were simply to try and understand the data and to work through the steps of the project to the best of my ability. For most of the activity I was not confident that I was able to achieve these goals but I submit my project as my best effort.
 
 ## Process
-### 1. Reveiwing Data Files
+### 1. Reviewing Data Files
 
 I spent time reviewing the tables and columns in the .csv files provided to determine the types of data for each column in each table. I used VARCHAR as the data types for many, INTEGER for those columns that were clearly numeric but had no decimal place and FLOAT for items that had decimal places like currency (price or revenue) and ratings like sentiment_score.
 

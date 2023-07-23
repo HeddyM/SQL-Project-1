@@ -65,7 +65,7 @@ SELECT COUNT(*) FROM analytics
 WHERE unit_price IS NULL
 ```
 some sample results from all_sessions showing the amount of missing data
-
+```
 --total rows in table 15,134
 --total_transaction_revenue - 15,053 null
 --transactions - 15,053 null
@@ -78,15 +78,15 @@ some sample results from all_sessions showing the amount of missing data
 --search_keyword - all null
 --page_path_level_one - all null
 --ecommerce_action_option - 15,103 null
-
+```
 and missing data in the analytics table
-
+```
 --total rows in table 4,301,122
 --userid - all null 4,301,122
 --units_sold - 4,205,975 null
 --bounces - 3,826,283 null
 --revenue - 4,285,767 null
-
+```
 
 **Primary Keys and Foreign Keys**
 ```

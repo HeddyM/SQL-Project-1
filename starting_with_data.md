@@ -25,7 +25,7 @@ ORDER BY EXTRACT(DOW FROM date)
 
 Answer: 
 The highest number of visits and the highest number of sales were on Tuesdays.
-
+```
 day_of_the_week	number_of_visits	number_of_sales
 Sunday		16036			8571
 Monday		24086			16919
@@ -34,7 +34,7 @@ Wednesday	23807			15735
 Thursday	23907			14555
 Friday		21179			14457
 Saturday	15469			7858
-
+```
 
 **Question 2:** 
 
@@ -81,7 +81,7 @@ ORDER BY number_of_visits DESC
 ```
 
 Answer:
-
+```
 channel_grouping   number_of_visits	  avg_time_on_site     avg_page_views
 Organic Search		444			220.51			5.43
 Referral		209			180.46			5.64
@@ -89,7 +89,7 @@ Direct			183			262.07			5.37
 Paid Search		52			175.96			5.94
 Display			8			512.38			7.25
 Affiliates		5			58.80			2.80
-
+```
 
 **Question 4:** 
 
@@ -118,7 +118,7 @@ ORDER BY product_category, price_rank
 Answer:
 
 I did not copy the results here as the resulting report is quite large (963 rows). It contains the following columns and content:
-
+```
 product_sku		The product's SKU
 product_name		The product's name
 product_catagory	The category that the product is in
@@ -127,16 +127,16 @@ price_rank		The rank of the price compared with the price of
 			other products in the same category	
 avg_price_by_category	The average of the highest price per product for all
 			products in that category.
-
+```
 One example: 
-
+```
 product_sku		GGOEGAAJ080616
 product_name		Men's Bike Short Sleeve Tee Charcoal
 product_catagory	Apparel
 top_price		15.99 (highest price charged for this item)
 price_rank		4 (4th highest priced product in Apparel)
 avg_price_by_category	19.69125 (Average of product prices in Apparel)
-
+```
 NOTE:
 There are multiple product prices in the table for each of many products, maybe because the price is different in different months, or different regions so I used the highest listed price for this calculation.
 
