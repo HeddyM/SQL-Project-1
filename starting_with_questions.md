@@ -158,14 +158,14 @@ Answer:
 Country Results
 The top products categories by country (ie. most units sold from that category) were:
 
-Each of these countries had only one catagory with 5 or more units sold
-
--Canada - Home/Apparel/Headgear
--Egypt - Home/Shop by Brand/Android
--Israel - Home/Shop by Brand/YouTube
--Japan - Home/Accessories
---Switzerland - Home/Apparel/Men's/Men's-T-Shirts
-
+Each of these countries had only one category with 5 or more units sold
+```
+Canada - Home/Apparel/Headgear
+Egypt - Home/Shop by Brand/Android
+Israel - Home/Shop by Brand/YouTube
+Japan - Home/Accessories
+Switzerland - Home/Apparel/Men's/Men's-T-Shirts
+```
 The United States had 28 categories where 5 or more units were sold so
 I have listed the top 5 categories here:
 
@@ -178,16 +178,17 @@ I have listed the top 5 categories here:
 City Results
 
 The number of categories with 5+ units sold and the top product category by city (ie. most units sold from that category) were:
--Chicago (4 categories) - 1. Home/Shop by Brand
--Mountain View (5 categories) - 1. Home/Apparel/Men's/Men's Outerwear
--New York (3 categories) - 1. Home/Bags/BackPacks
--Pittsburgh (1 category) - 1. Home/Office/Notebooks & Journals
--San Francisco (1 category) - 1. Home/Apparel/Women's/Women's-T-Shirts
--Seattle (1 category) - 1. Home/Nest/Nest-USA
--Sunnyvale (2 categories) - 1. Housewares
--Tel Aviv-Yafo (1 category) - Home/Shop by Brand/YouTube
--Toronto (1 category) - Home/Apparel/Headgear
-
+```
+Chicago (4 categories) - 1. Home/Shop by Brand
+Mountain View (5 categories) - 1. Home/Apparel/Men's/Men's Outerwear
+New York (3 categories) - 1. Home/Bags/BackPacks
+Pittsburgh (1 category) - 1. Home/Office/Notebooks & Journals
+San Francisco (1 category) - 1. Home/Apparel/Women's/Women's-T-Shirts
+Seattle (1 category) - 1. Home/Nest/Nest-USA
+Sunnyvale (2 categories) - 1. Housewares
+Tel Aviv-Yafo (1 category) - Home/Shop by Brand/YouTube
+Toronto (1 category) - Home/Apparel/Headgear
+```
 Note: Toronto is the only city in Canada that had any sales recorded in the database and Tel Aviv_Yafo is the only city in Israel in the database so the city and country results are exactly the same.
 
 Note: There were many records for each country where just 1 item was purchased from that category so I decided to limit the results to those categories where 5 or more items were ordered within each country or city.
@@ -228,26 +229,26 @@ ORDER BY city, total_units_sold DESC;
 
 Answer:
 The top selling product by country (where 5 or more units were ordered per product) are:
-
--Canada - Android Stretch Fit Hat Black
--Egypt - Android RFID Journal
--Israel - YouTube Hard Cover Journal
--Japan - Google Lunch Bag
--United States - Google Alpine Style Backpack
-
+```
+Canada - Android Stretch Fit Hat Black
+Egypt - Android RFID Journal
+Israel - YouTube Hard Cover Journal
+Japan - Google Lunch Bag
+United States - Google Alpine Style Backpack
+```
 The top selling product by city (where 5 or more units were ordered per product) are:
-
--Chicago - Google Alpine Style Backpack
--Houston - Google Sunglasses
--Mountain View - Google Men's Airflow 1/4 Zip Pullover Black
--New York - Google Alpine Style Backpack
--Pittsburgh - You Tube Hard Cover Journal
--San Francisco - Google Women's Scoop Neck Tee White
--Seattle - Nest® Cam Indoor Security Camera - USA
--Sunnyvale - SPF-15 Slim & Slender Lip Balm
--Tel Aviv-Yafo - YouTube Hard Cover Journal
--Toronto - Android Stretch Fit Hat Black
-
+```
+Chicago - Google Alpine Style Backpack
+Houston - Google Sunglasses
+Mountain View - Google Men's Airflow 1/4 Zip Pullover Black
+New York - Google Alpine Style Backpack
+Pittsburgh - You Tube Hard Cover Journal
+San Francisco - Google Women's Scoop Neck Tee White
+Seattle - Nest® Cam Indoor Security Camera - USA
+Sunnyvale - SPF-15 Slim & Slender Lip Balm
+Tel Aviv-Yafo - YouTube Hard Cover Journal
+Toronto - Android Stretch Fit Hat Black
+```
 Note: Houston appeared on this list and not on the product category list in the previous question because it was one of the items where the product category was not provided.
 
 Note: Again to make the reults more manageable I limited the result to products with sales of 5 or more units (many countries had a list of products where only 1 unit was ordered)
@@ -280,17 +281,17 @@ GROUP BY city)
 Answer:
 
 Some additional information on transaction revenues:
+```
+By country:
+MAX - $13,154.17
+MIN - $16.99
+AVG - $2,856.26
 
--By country:
--MAX - $13,154.17
--MIN - $16.99
--AVG - $2,856.26
-
--By city:
--MAX - $6,092.56
--MIN - $16.99
--AVG - $714.07
-
+By city:
+MAX - $6,092.56
+MIN - $16.99
+AVG - $714.07
+```
 
 NOTE: I had no idea how to approach this question as it seemed very similar to question one. I chose to expand on the information in question 1 by providing MIN, MAX, AVG information across countries and cities as a way of "summarizing revenue". I used the queries in question 1 as CTE's and then added a query to get MIN, MAX and AVG.
 
