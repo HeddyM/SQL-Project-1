@@ -1,11 +1,12 @@
-Start with Questions - Heather Lane
+## Start with Questions - Heather Lane
 
-Answer the following questions and provide the SQL queries used to find the answer.
+### Answer the following questions and provide the SQL queries used to find the answer.
 
     
 **Question 1: Which cities and countries have the highest level of transaction revenues on the site?**
 
 SQL Queries:
+```
 SELECT 	country, 
 	SUM(total_transaction_revenue/1000000) AS transaction_revenue 
 FROM all_sessions
@@ -19,6 +20,7 @@ FROM all_sessions
 WHERE total_transaction_revenue IS NOT NULL AND city != 'not set'
 GROUP BY city
 ORDER BY transaction_revenues DESC
+```
 
 Answer: 
 The country with the highest transaction revenue is the United States.
@@ -30,6 +32,7 @@ Note: I used the total_transaction_revenue column of the all_sessions table for 
 **Question 2: What is the average number of products ordered from visitors in each city and country?**
 
 SQL Queries:
+```
 --average number of different products ordered - country
 
 WITH cte_number_products_ordered AS 
@@ -87,6 +90,7 @@ ON al.visit_id = an.visit_id
 
 SELECT AVG(number_of_items_by_city) AS avg_number_items_city
 FROM cte_number_products_ordered;
+```
 
 Answer:
 I could have interpreted this questions two ways so I have provided both options.
@@ -107,6 +111,7 @@ NOTE: In this and the next two questions it was necessary to join the all_sessio
 **Question 3: Is there any pattern in the types (product categories) of products ordered from visitors in each city and country?**
 
 SQL Queries:
+```
 --product categories by country
 
 SELECT 	al.country, 
@@ -142,6 +147,7 @@ JOIN analytics an
 ON al.visit_id = an.visit_id
 	WHERE country = 'Canada' AND city!= 'Toronto' 
 	AND city IS NOT NULL AND an.units_sold IS NOT NULL
+```
 
 Answer:
 
@@ -187,7 +193,7 @@ Note: There were many records for each country where just 1 item was purchased f
 **Question 4: What is the top-selling product from each city/country? Can we find any pattern worthy of noting in the products sold?**
 
 SQL Queries:
-
+```
 --top selling product by country
 
 SELECT 	al.country, 
@@ -215,6 +221,7 @@ ON al.visit_id = an.visit_id
 	GROUP BY al.city, al.product_sku, al.product_name
 	HAVING SUM(an.units_sold) >= 5
 ORDER BY city, total_units_sold DESC;
+```
 
 Answer:
 The top selling product by country (where 5 or more units were ordered per product) are:
@@ -246,7 +253,7 @@ Note: Again to make the reults more manageable I limited the result to products 
 **Question 5: Can we summarize the impact of revenue generated from each city/country?**
 
 SQL Queries:
-
+```
 WITH cte_transaction_revenue AS (SELECT country, SUM(total_transaction_revenue/1000000) AS transaction_revenues 
 FROM all_sessions
 WHERE total_transaction_revenue IS NOT NULL
@@ -265,6 +272,7 @@ GROUP BY city)
 		MIN(transaction_revenues),
 		AVG(transaction_revenues)
 	FROM cte_transaction_revenue;
+```
 
 Answer:
 
